@@ -8,6 +8,13 @@ $cmd = buildCommand();
 $dir = '';
 $regexp = '';
 $replacement = '';
+if(isset($cmd['l'])) {
+    $preset = parse_ini_file(__DIR__ . '/preset.ini', true);
+    foreach($preset as $presetName=>$preset) {
+        echo "{$presetName}\n";
+    }
+    exit;
+}
 if(strlen($cmd['preset'])) {
     $preset = parse_ini_file(__DIR__ . '/preset.ini', true);
     $presetName = $cmd['preset'];
@@ -88,6 +95,10 @@ function buildCommand($argv = null) {
     $cmd->option('p')
         ->aka("preset")
         ->describe("プリセット名を指定します");
+
+    $cmd->option('l')
+        ->boolean()
+        ->describe('プリセットの一覧を表示します');
 
     $cmd->option('i')
         ->aka('dir')
