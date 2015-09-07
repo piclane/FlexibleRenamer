@@ -8,7 +8,7 @@ $cmd = buildCommand();
 $dir = '';
 $regexp = '';
 $replacement = '';
-if(isset($cmd['l'])) {
+if($cmd['l']) {
     $preset = parse_ini_file(__DIR__ . '/preset.ini', true);
     foreach($preset as $presetName=>$preset) {
         echo "{$presetName}\n";
