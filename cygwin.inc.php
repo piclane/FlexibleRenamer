@@ -13,16 +13,26 @@ function _cp($path) {
     if(empty($path)) {
         return '';
     }
+    $path = trim($path);
     if(!IS_CYGWIN_ENV) {
         return $path;
     }
+    return exec("cygpath -u '{$path}'");
+}
+
+/**
+ * Cygwin パスを Windows パスに変換
+ *
+ * @param string $path Cygwin パス
+ * @return string Windows パス
+ */
+function _wp($path) {
+    if(empty($path)) {
+        return '';
+    }
     $path = trim($path);
-    $path = str_replace('\\', '/', $path);
-    if(preg_match('!^[\'"](.*)[\'"]$!', $path, $matches)) {
-        $path = $matches[1];
+    if(!IS_CYGWIN_ENV) {
+        return $path;
     }
-    if(preg_match('!^/cygdrive/([^/]+)(.*)$!', $path, $matches)) {
-        $path = strtoupper($matches[1]).':'.$matches[2];
-    }
-    return $path;
+    return exec("cygpath -w '{$path}'");
 }
