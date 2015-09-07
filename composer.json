@@ -1,0 +1,17 @@
+{
+  "name": "piclane/FlexibleRenamer",
+  "description": "FlexibleRenamer",
+  "homepage": "https://github.com/piclane/FlexibleRenamer",
+  "license": "MIT",
+  "version": "0.1.0",
+  "authors": [{
+      "name": "Yohei Hina",
+      "email": "piclane@gmail.com"
+  }],
+  "require": {
+    "php": ">=5.3",
+    "nategood/commando": "*"
+  },
+  "autoload": {
+  }
+}
